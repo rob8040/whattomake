@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :ingredients
+  has_many :recipes
 
   validates :username, presence: true
   validates :profile_photo, presence: true
