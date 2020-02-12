@@ -6,10 +6,10 @@ const RecipeTile = ({recipeData}) => {
   return(
     <div>
       <img src={picture}/>
-      <p>Ingredients: {ingredients}</p>
-      <p>Instructions: {instructions}</p>
-      <p>Rating: {rating}</p>
-      <p>Review: {review}</p>
+      <p id="ingredients">Ingredients: {ingredients}</p>
+      <p id="instructions">Instructions: {instructions}</p>
+      <p id="rating">Rating: {rating}</p>
+      <p id="review">Review: {review}</p>
     </div>
   )
 }
