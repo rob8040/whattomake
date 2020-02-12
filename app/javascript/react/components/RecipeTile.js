@@ -1,9 +1,12 @@
 import React from "react"
 
-const RecipeTile = props => {
-
+const RecipeTile = ({recipeData}) => {
+  let { id, picture, ingredients, instructions, rating, review } = recipeData
+debugger
   return(
-    <h2>Suh from tile</h2>
+    <div>
+      <h1>{ingredients}</h1>
+    </div>
   )
 }
 
