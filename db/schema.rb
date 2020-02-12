@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_184141) do
   create_table "recipes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "ingredient_id", null: false
+    t.string "name", null: false
     t.text "picture", null: false
     t.text "ingredients", null: false
     t.text "instructions", null: false

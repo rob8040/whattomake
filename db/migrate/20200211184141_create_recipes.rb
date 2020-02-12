@@ -4,6 +4,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.belongs_to :user, null: false
       t.belongs_to :ingredient, null: false
 
+      t.string :name, null: false
       t.text :picture, null: false
       t.text :ingredients, null: false
       t.text :instructions, null: false
