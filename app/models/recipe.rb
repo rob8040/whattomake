@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   belongs_to :ingredient
 
+  validates :name, presence: true
   validates :picture, presence: true
   validates :ingredients, presence: true
   validates :instructions, presence: true

@@ -13,6 +13,7 @@ describe("RecipeTile", () => {
 
   beforeEach(() => {
     recipeData = {
+      name: "food title",
       picture: "image.png",
       ingredients: "food",
       instructions: "just do it",
@@ -26,6 +27,10 @@ describe("RecipeTile", () => {
         />
       </BrowserRouter>
     )
+  })
+
+  it("should find a h1 element containing the name as props", () => {
+    expect(wrapper.find("#name").text()).toBe("food title")
   })
 
   it("should find an img element containing the picture via props", () => {

@@ -10,6 +10,7 @@ RSpec.describe Api::V1::RecipesController, type: :controller do
   let!(:first_recipe) { Recipe.create(
     user_id: user_1.id,
     ingredient_id: ingredient_1.id,
+    name: "bacon egg and cheese",
     picture: "image1.jpg",
     ingredients: "bacon, egg, cheese, bagel",
     instructions: "cook eggs and bacon. put on bagel. add cheese",
@@ -20,6 +21,7 @@ RSpec.describe Api::V1::RecipesController, type: :controller do
   let!(:second_recipe) { Recipe.create(
     user_id: user_2.id,
     ingredient_id: ingredient_2.id,
+    name: "pbj",
     picture: "image2.jpg",
     ingredients: "peanut butter, bread, jelly",
     instructions: "spread pb and jelly on bread slices",
@@ -31,13 +33,14 @@ RSpec.describe Api::V1::RecipesController, type: :controller do
     it "should return a list of all the recipes" do
       get :index
       returned_json = JSON.parse(response.body)
-      # binding.pry
+
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
       expect(returned_json.length).to eq 2
 
       expect(returned_json[0]["user_id"]).to eq user_1.id
       expect(returned_json[0]["ingredient_id"]).to eq ingredient_1.id
+      expect(returned_json[0]["name"]).to eq "bacon egg and cheese"
       expect(returned_json[0]["picture"]).to eq "image1.jpg"
       expect(returned_json[0]["ingredients"]).to eq "bacon, egg, cheese, bagel"
       expect(returned_json[0]["instructions"]).to eq "cook eggs and bacon. put on bagel. add cheese"
@@ -46,6 +49,7 @@ RSpec.describe Api::V1::RecipesController, type: :controller do
 
       expect(returned_json[1]["user_id"]).to eq user_2.id
       expect(returned_json[1]["ingredient_id"]).to eq ingredient_2.id
+      expect(returned_json[1]["name"]).to eq "pbj"
       expect(returned_json[1]["picture"]).to eq "image2.jpg"
       expect(returned_json[1]["ingredients"]).to eq "peanut butter, bread, jelly"
       expect(returned_json[1]["instructions"]).to eq "spread pb and jelly on bread slices"
