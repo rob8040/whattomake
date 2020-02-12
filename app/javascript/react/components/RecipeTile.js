@@ -2,10 +2,14 @@ import React from "react"
 
 const RecipeTile = ({recipeData}) => {
   let { id, picture, ingredients, instructions, rating, review } = recipeData
-debugger
+
   return(
     <div>
-      <h1>{ingredients}</h1>
+      <img src={picture}/>
+      <p>Ingredients: {ingredients}</p>
+      <p>Instructions: {instructions}</p>
+      <p>Rating: {rating}</p>
+      <p>Review: {review}</p>
     </div>
   )
 }
