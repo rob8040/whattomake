@@ -346,13 +346,13 @@ $callout-link-tint: 30%;
 // 14. Card
 // --------
 
-$card-background: $white;
+
 $card-font-color: $body-font-color;
-$card-divider-background: $light-gray;
+$card-divider-background: $black;
 $card-border: 1px solid $light-gray;
 $card-shadow: none;
-$card-border-radius: $global-radius;
-$card-padding: $global-padding;
+$card-border-radius: 10px;
+$card-padding: 20px;
 $card-margin-bottom: $global-margin;
 
 // 15. Close Button
@@ -892,4 +892,3 @@ $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
-

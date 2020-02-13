@@ -107,15 +107,19 @@ const RecipesIndexContainer = props => {
   })
 
   return(
-    <div>
-      <IngredientForm
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-        clearForm={clearForm}
-        newIngredients={newIngredients}
-        errors={errors}
-      />
-      {recipeTiles}
+    <div className="grid-x">
+      <div className="cell">
+        <IngredientForm
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+          clearForm={clearForm}
+          newIngredients={newIngredients}
+          errors={errors}
+        />
+      </div>
+      <div className="cell">
+        {recipeTiles}
+      </div>
     </div>
   )
 }
