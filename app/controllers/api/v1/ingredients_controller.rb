@@ -5,7 +5,7 @@ class Api::V1::IngredientsController < ApplicationController
 
   def create
     ingredients = Ingredient.new(ingredient_params)
-    binding.pry
+    
     if ingredients.save
       render json: { ingredients: ingredients}
     else
