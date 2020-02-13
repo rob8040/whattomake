@@ -9,30 +9,25 @@ import RecipeTile from "./RecipeTile"
 
 describe("RecipeTile", () => {
   let wrapper
-  let recipeData
+  let ingredientData
 
   beforeEach(() => {
-    recipeData = {
+    ingredientData = {
+      ingredients: "my food",
       user: {username: "Userman"},
-      ingredient: {ingredients: "my food"},
-      name: "food title",
-      picture: "image.png",
-      ingredients: "food",
-      instructions: "just do it",
-      rating: "5",
-      review: "this is ok"
+      recipes: [{name: "food title", picture: "image.png", ingredients: "food", instructions: "just do it", rating: "5", review: "this is ok"}]
     }
     wrapper = mount(
       <BrowserRouter>
         <RecipeTile
-          recipeData={recipeData}
+          ingredientData={ingredientData}
         />
       </BrowserRouter>
     )
   })
 
   it("should find a h5 element containing the username as props", () => {
-    expect(wrapper.find("#username").text()).toEqual("User: Userman")
+    expect(wrapper.find("#username").text()).toBe("User: Userman")
   })
 
   it("should find a h5 element containing the ingredients as props", () => {

@@ -10,7 +10,7 @@ debugger
         <h5 id="useringredients">Ingredients user had: {ingredients}</h5>
       </div>
         <div className="card-divider">
-        <h1 id="name">{name}</h1>
+        <h1 id="name">{recipes[0].name}</h1>
       </div>
       <div className="card-section solid">
         <img src={recipes[0].picture}/>
