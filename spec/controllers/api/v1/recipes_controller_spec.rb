@@ -33,28 +33,27 @@ RSpec.describe Api::V1::RecipesController, type: :controller do
     it "should return a list of all the recipes" do
       get :index
       returned_json = JSON.parse(response.body)
-
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-      expect(returned_json.length).to eq 2
+      expect(returned_json["recipes"].length).to eq 2
 
-      expect(returned_json[0]["user_id"]).to eq user_1.id
-      expect(returned_json[0]["ingredient_id"]).to eq ingredient_1.id
-      expect(returned_json[0]["name"]).to eq "bacon egg and cheese"
-      expect(returned_json[0]["picture"]).to eq "image1.jpg"
-      expect(returned_json[0]["ingredients"]).to eq "bacon, egg, cheese, bagel"
-      expect(returned_json[0]["instructions"]).to eq "cook eggs and bacon. put on bagel. add cheese"
-      expect(returned_json[0]["rating"]).to eq 7
-      expect(returned_json[0]["review"]).to eq "pretty simple and delicious!"
+      expect(returned_json["recipes"][0]["user"]["id"]).to eq user_1.id
+      expect(returned_json["recipes"][0]["ingredient"]["id"]).to eq ingredient_1.id
+      expect(returned_json["recipes"][0]["name"]).to eq "bacon egg and cheese"
+      expect(returned_json["recipes"][0]["picture"]).to eq "image1.jpg"
+      expect(returned_json["recipes"][0]["ingredients"]).to eq "bacon, egg, cheese, bagel"
+      expect(returned_json["recipes"][0]["instructions"]).to eq "cook eggs and bacon. put on bagel. add cheese"
+      expect(returned_json["recipes"][0]["rating"]).to eq 7
+      expect(returned_json["recipes"][0]["review"]).to eq "pretty simple and delicious!"
 
-      expect(returned_json[1]["user_id"]).to eq user_2.id
-      expect(returned_json[1]["ingredient_id"]).to eq ingredient_2.id
-      expect(returned_json[1]["name"]).to eq "pbj"
-      expect(returned_json[1]["picture"]).to eq "image2.jpg"
-      expect(returned_json[1]["ingredients"]).to eq "peanut butter, bread, jelly"
-      expect(returned_json[1]["instructions"]).to eq "spread pb and jelly on bread slices"
-      expect(returned_json[1]["rating"]).to eq 6
-      expect(returned_json[1]["review"]).to eq "The ol standby"
+      expect(returned_json["recipes"][1]["user"]["id"]).to eq user_2.id
+      expect(returned_json["recipes"][1]["ingredient"]["id"]).to eq ingredient_2.id
+      expect(returned_json["recipes"][1]["name"]).to eq "pbj"
+      expect(returned_json["recipes"][1]["picture"]).to eq "image2.jpg"
+      expect(returned_json["recipes"][1]["ingredients"]).to eq "peanut butter, bread, jelly"
+      expect(returned_json["recipes"][1]["instructions"]).to eq "spread pb and jelly on bread slices"
+      expect(returned_json["recipes"][1]["rating"]).to eq 6
+      expect(returned_json["recipes"][1]["review"]).to eq "The ol standby"
     end
   end
 end

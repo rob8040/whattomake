@@ -13,6 +13,8 @@ describe("RecipeTile", () => {
 
   beforeEach(() => {
     recipeData = {
+      user: {username: "Userman"},
+      ingredient: {ingredients: "my food"},
       name: "food title",
       picture: "image.png",
       ingredients: "food",
@@ -27,6 +29,14 @@ describe("RecipeTile", () => {
         />
       </BrowserRouter>
     )
+  })
+
+  it("should find a h5 element containing the username as props", () => {
+    expect(wrapper.find("#username").text()).toEqual("User: Userman")
+  })
+
+  it("should find a h5 element containing the ingredients as props", () => {
+    expect(wrapper.find("#useringredients").text()).toBe("Ingredients user had: my food")
   })
 
   it("should find a h1 element containing the name as props", () => {
