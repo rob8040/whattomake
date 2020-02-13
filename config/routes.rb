@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :recipes, only: [:index] do
-        resources :ingredients, only: [:index, :create]
+      resources :ingredients, only: [:index, :create] do
+        resources :recipes, only: [:index, :create]
       end
     end
   end
