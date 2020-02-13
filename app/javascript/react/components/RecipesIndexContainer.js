@@ -12,7 +12,7 @@ const RecipesIndexContainer = props => {
   const [ errors, setErrors ] = useState("")
 
   useEffect(() => {
-    fetch("/api/v1/recipes")
+    fetch("/api/v1/ingredients")
     .then(response => {
       if (response.ok) {
         return response
@@ -24,13 +24,13 @@ const RecipesIndexContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setRecipes(body.recipes)
+      setRecipes(body.ingredients)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
   const addNewIngredient = (formPayload) => {
-    debugger
+    // debugger
       fetch("/api/v1/ingredients", {
         method: "POST",
         body: JSON.stringify(formPayload),
@@ -100,7 +100,7 @@ const RecipesIndexContainer = props => {
       <div>
         <RecipeTile
           key={recipe.id}
-          recipeData={recipe}
+          ingredientData={recipe}
         />
       </div>
     )
