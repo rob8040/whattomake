@@ -11,7 +11,6 @@ const RecipesIndexContainer = props => {
   })
   const [ errors, setErrors ] = useState("")
 
-
   useEffect(() => {
     fetch("/api/v1/recipes")
     .then(response => {
@@ -25,8 +24,7 @@ const RecipesIndexContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
-      setRecipes(body)
+      setRecipes(body.recipes)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
