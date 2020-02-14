@@ -24,13 +24,13 @@ class Api::V1::IngredientsController < ApplicationController
 
       # response = Faraday.get(search)
       binding.pry
-      if ingredients.save
-        render json: { ingredients: ingredients}
-      else
-        render json: { error: ingredients.errors.full_messages }
-      end
-    else
-      redirect_to root_path
+    #   if ingredients.save
+        # render json: { ingredients: ingredients}
+    #   else
+    #     render json: { error: ingredients.errors.full_messages }
+    #   end
+    # else
+      # redirect_to root_path
     end
   end
 
