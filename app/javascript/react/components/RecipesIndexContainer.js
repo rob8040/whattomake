@@ -5,14 +5,12 @@ import IngredientForm from "./IngredientForm"
 
 const RecipesIndexContainer = props => {
   const [ recipes, setRecipes ] = useState([])
-  const [ ingredients, setIngredients ] = useState([])
-  const [ newIngredients, setNewIngredients ] = useState({
-    ingredients: ""
-  })
+  const [ ingredients, setIngredients ] = useState({})
+  const [ newIngredients, setNewIngredients ] = useState({})
   const [ errors, setErrors ] = useState("")
 
   useEffect(() => {
-    fetch("/api/v1/ingredients")
+    fetch("/api/v1/recipes")
     .then(response => {
       if (response.ok) {
         return response
@@ -24,20 +22,20 @@ const RecipesIndexContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setRecipes(body.ingredients)
+      setRecipes(body.recipes)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
   const addNewIngredient = (formPayload) => {
-    // debugger
       fetch("/api/v1/ingredients", {
+        credentials: 'same-origin',
         method: "POST",
-        body: JSON.stringify(formPayload),
         headers: {
-          Accept: 'application/json',
+          'Accept': 'application/json',
           'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify(formPayload)
       })
       .then(response => {
         if (response.ok) {
