@@ -30,7 +30,6 @@ const RecipesIndexContainer = props => {
   },[])
 
   const addNewIngredient = (formPayload) => {
-    // debugger
       fetch("/api/v1/ingredients", {
         method: "POST",
         body: JSON.stringify(formPayload),
