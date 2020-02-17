@@ -28,7 +28,7 @@ const RecipesIndexContainer = props => {
   },[])
 
   const addNewIngredient = (formPayload) => {
-      fetch("/api/v1/ingredients", {
+      fetch("/api/v1/recipes_search", {
         credentials: 'same-origin',
         method: "POST",
         headers: {

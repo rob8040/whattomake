@@ -1,5 +1,4 @@
 class Api::V1::IngredientsController < ApplicationController
-  # before_action :authenticate_user!, only: [:create]
   skip_before_action :verify_authenticity_token, only: [:create]
 
   protect_from_forgery unless: -> { request.format.json? }
@@ -8,7 +7,7 @@ class Api::V1::IngredientsController < ApplicationController
     render json: Ingredient.all
   end
 
-  def create
+  def search
     if current_user
       ingredients = Ingredient.new(ingredient_params)
       ingredients.user = current_user
@@ -22,15 +21,19 @@ class Api::V1::IngredientsController < ApplicationController
       search_url = base_url += (final + "&number=3")
       search = search_url += ("&apiKey=#{ENV["SPOON_KEY"]}")
 
-      # response = Faraday.get(search)
+      response = Faraday.get(search)
+      parsed_response = JSON.parse(response.body)
+      recipes_array = []
+      parsed_response.each do |recipe|
+        recipe_object = {
+          id: recipe["id"],
+          name: recipe["title"],
+          picture: recipe["image"]
+        }
+        recipes_array << recipe_object
+      end
       binding.pry
-    #   if ingredients.save
-        # render json: { ingredients: ingredients}
-    #   else
-    #     render json: { error: ingredients.errors.full_messages }
-    #   end
-    # else
-      # redirect_to root_path
+
     end
   end
 
