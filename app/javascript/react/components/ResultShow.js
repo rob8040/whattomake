@@ -37,14 +37,14 @@ const ResultShow = props => {
   return(
     <div className="card index_margin">
       <div className="index_padding solid">
-        <h2 id="username">{recipeInfo.name}</h2>
+        <h2 id="">{recipeInfo.name}</h2>
       </div>
       <div className="card-section solid">
         <img src={recipeInfo.picture}/>
         <h5>Ingredients:</h5>
         {ingredientList}
         <br />
-        <p id="instructions">Instructions: {recipeInfo.instructions}</p>
+        <p id="">Instructions: {recipeInfo.instructions}</p>
       </div>
     </div>
   )
