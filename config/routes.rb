@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get "/", to: 'homes#index'
   get "/recipes", to: 'homes#index'
+  get "/recipes_search", to: 'homes#index'
 
   devise_for :users
 

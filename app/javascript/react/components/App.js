@@ -10,7 +10,7 @@ export const App = (props) => {
       <Switch>
        <Route exact path="/" component={RecipesIndexContainer}/>
        <Route exact path="/recipes" component={RecipesIndexContainer}/>
-       <Route exact path="/api/v1/ingredients/:ingredient_id/recipes" component={ResultContainer}/>
+       <Route exact path="/recipes_search" component={ResultContainer}/>
       </Switch>
     </BrowserRouter>
   )

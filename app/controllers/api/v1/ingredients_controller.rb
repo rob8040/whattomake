@@ -18,7 +18,7 @@ class Api::V1::IngredientsController < ApplicationController
       plus = split_query.map { |x| "+" + x }
       array.concat(plus)
       final = array.join(",")
-      search_url = base_url += (final + "&number=3")
+      search_url = base_url += (final + "&number=4")
       search = search_url += ("&apiKey=#{ENV["SPOON_KEY"]}")
 
       response = Faraday.get(search)
@@ -32,8 +32,8 @@ class Api::V1::IngredientsController < ApplicationController
         }
         recipes_array << recipe_object
       end
-      binding.pry
 
+      render json: recipes_array
     end
   end
 
