@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react"
+import { Redirect } from "react-router-dom"
 
 import RecipeTile from "./RecipeTile"
 import IngredientForm from "./IngredientForm"
+import ResultContainer from "./ResultContainer"
 
 const RecipesIndexContainer = props => {
+  const [ shouldRedirect, setShouldRedirect ] = useState(false)
   const [ recipes, setRecipes ] = useState([])
   const [ ingredients, setIngredients ] = useState([])
-  const [ newIngredients, setNewIngredients ] = useState({
-    ingredients: ""
-  })
+  const [ newIngredients, setNewIngredients ] = useState({})
   const [ errors, setErrors ] = useState("")
 
   useEffect(() => {
-    fetch("/api/v1/ingredients")
+    fetch("/api/v1/recipes")
     .then(response => {
       if (response.ok) {
         return response
@@ -24,39 +25,40 @@ const RecipesIndexContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setRecipes(body.ingredients)
+      setRecipes(body.recipes)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
   const addNewIngredient = (formPayload) => {
-      fetch("/api/v1/ingredients", {
-        method: "POST",
-        body: JSON.stringify(formPayload),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          return response
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage)
-          throw error
-        }
-      })
-      .then(response => response.json())
-      .then(response => {
-        if (response) {
-          setIngredients([...ingredients, response])
-        } else {
-          setErrors(response.errors)
-        }
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
-    }
+    fetch("/api/v1/recipes_search", {
+      credentials: 'same-origin',
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formPayload)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response) {
+        setIngredients(response)
+      } else {
+        setErrors(response.errors)
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
   const handleInputChange = (event) => {
     setNewIngredients({
@@ -105,6 +107,16 @@ const RecipesIndexContainer = props => {
     )
   })
 
+  let returnedRecipes = ingredients.map(recipe => {
+    
+    return(
+      <ResultContainer
+        key={recipe.id}
+        recipes={recipe}
+      />
+    )
+  })
+
   return(
     <div className="grid-x">
       <div className="cell">
@@ -116,6 +128,7 @@ const RecipesIndexContainer = props => {
           errors={errors}
         />
       </div>
+      {returnedRecipes}
       <div className="cell">
         {recipeTiles}
       </div>

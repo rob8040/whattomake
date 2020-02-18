@@ -1,10 +1,16 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 
-const ResultContainer = props => {
+const ResultContainer = ({recipes}) => {
+  let { id, name, picture } = recipes
 
   return(
-    <div>
-      <h1>sup from result container</h1>
+    <div className="card index_margin">
+      <div className="index_padding solid">
+        <h5 id="username">{name}</h5>
+      </div>
+      <div className="card-section solid">
+        <img src={picture}/>
+      </div>
     </div>
   )
 }

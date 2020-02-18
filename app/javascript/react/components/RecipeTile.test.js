@@ -13,9 +13,14 @@ describe("RecipeTile", () => {
 
   beforeEach(() => {
     ingredientData = {
-      ingredients: "my food",
+      ingredient: { ingredients: "my food"},
       user: {username: "Userman"},
-      recipes: [{name: "food title", picture: "image.png", ingredients: "food", instructions: "just do it", rating: "5", review: "this is ok"}]
+      name: "food title",
+      picture: "image.png",
+      ingredients: "food",
+      instructions: "just do it",
+      rating: "5",
+      review: "this is ok"
     }
     wrapper = mount(
       <BrowserRouter>
