@@ -11,29 +11,34 @@ class Api::V1::IngredientsController < ApplicationController
     if current_user
       ingredients = Ingredient.new(ingredient_params)
       ingredients.user = current_user
-      array = []
-      base_url = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="
-      split_query = ingredients.ingredients.split(", ")
-      array << split_query.shift
-      plus = split_query.map { |x| "+" + x }
-      array.concat(plus)
-      final = array.join(",")
-      search_url = base_url += (final + "&number=4")
-      search = search_url += ("&apiKey=#{ENV["SPOON_KEY"]}")
 
-      response = Faraday.get(search)
-      parsed_response = JSON.parse(response.body)
-      recipes_array = []
-      parsed_response.each do |recipe|
-        recipe_object = {
-          id: recipe["id"],
-          name: recipe["title"],
-          picture: recipe["image"]
-        }
-        recipes_array << recipe_object
+      if ingredients.save
+        array = []
+        base_url = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="
+        split_query = ingredients.ingredients.split(", ")
+        array << split_query.shift
+        plus = split_query.map { |x| "+" + x }
+        array.concat(plus)
+        final = array.join(",")
+        search_url = base_url += (final + "&number=4")
+        search = search_url += ("&apiKey=#{ENV["SPOON_KEY"]}")
+
+        response = Faraday.get(search)
+        parsed_response = JSON.parse(response.body)
+        recipes_array = []
+        parsed_response.each do |recipe|
+          recipe_object = {
+            id: recipe["id"],
+            name: recipe["title"],
+            picture: recipe["image"]
+          }
+          recipes_array << recipe_object
+        end
+
+        render json: {recipes_array: recipes_array, ingredients: ingredients}
+      else
+        render json: ingredients.errors.full_messages.to_sentence
       end
-
-      render json: recipes_array
     end
   end
 
