@@ -7,13 +7,12 @@ import ResultContainer from "./ResultContainer"
 
 const RecipesIndexContainer = props => {
   const [ shouldRedirect, setShouldRedirect ] = useState(false)
-  const [ recipes, setRecipes ] = useState([])
-  const [ ingredients, setIngredients ] = useState([])
-  const [ newIngredients, setNewIngredients ] = useState({})
-  const [ errors, setErrors ] = useState("")
+  const [ allRecipes, setAllRecipes ] = useState([])
+  const [ newRecipes, setNewRecipes ] = useState([])
+  const [ searchedIngredients, setSearchedIngredients ] = useState({})
 
   useEffect(() => {
-    fetch("/api/v1/recipes")
+    fetch("/api/v1/ingredients/:ingredient_id/recipes")
     .then(response => {
       if (response.ok) {
         return response
@@ -25,7 +24,7 @@ const RecipesIndexContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setRecipes(body.recipes)
+      setAllRecipes(body.recipes)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
@@ -52,7 +51,8 @@ const RecipesIndexContainer = props => {
     .then(response => response.json())
     .then(response => {
       if (response) {
-        setIngredients(response)
+        setNewRecipes(response.recipes_array)
+        setSearchedIngredients(response.ingredients)
       } else {
         setErrors(response.errors)
       }
@@ -60,42 +60,7 @@ const RecipesIndexContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  const handleInputChange = (event) => {
-    setNewIngredients({
-      ...newIngredients,
-      [event.currentTarget.id]: event.currentTarget.value
-    })
-  }
-
-  const validSubmission = () => {
-    let submitErrors = {}
-    const requiredFields = ["ingredients"]
-    requiredFields.forEach((field) => {
-      if (newIngredients[field].trim() === "") {
-        submitErrors = {
-          ...submitErrors, [field]: "is blank"
-        }
-      }
-    })
-    setErrors(submitErrors)
-    return _.isEmpty(submitErrors)
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    if (validSubmission()) {
-      addNewIngredient(newIngredients)
-      clearForm()
-    }
-  }
-
-  const clearForm = (event) => {
-    setNewIngredients({
-      ingredients: ""
-    })
-  }
-
-  const recipeTiles = recipes.map(recipe => {
+  const recipeTiles = allRecipes.map(recipe => {
 
     return(
       <div>
@@ -107,12 +72,13 @@ const RecipesIndexContainer = props => {
     )
   })
 
-  let returnedRecipes = ingredients.map(recipe => {
-    
+  let returnedRecipes = newRecipes.map(recipe => {
+
     return(
       <ResultContainer
         key={recipe.id}
         recipes={recipe}
+        searchedIngredients={searchedIngredients}
       />
     )
   })
@@ -121,11 +87,7 @@ const RecipesIndexContainer = props => {
     <div className="grid-x">
       <div className="cell">
         <IngredientForm
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          clearForm={clearForm}
-          newIngredients={newIngredients}
-          errors={errors}
+          addNewIngredient={addNewIngredient}
         />
       </div>
       {returnedRecipes}

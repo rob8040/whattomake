@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get "/", to: 'homes#index'
   get "/recipes", to: 'homes#index'
+  get "/ingredients/:ingredient_id/recipes/:id", to: 'homes#index'
   get "/recipes_search", to: 'homes#index'
 
   devise_for :users
@@ -11,9 +12,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/recipes_search', to: "ingredients#search"
-      resources :recipes, only: [:index]
       resources :ingredients, only: [:index, :create] do
-        resources :recipes, only: [:index, :create]
+        resources :recipes, only: [:index, :create, :show]
       end
     end
   end
