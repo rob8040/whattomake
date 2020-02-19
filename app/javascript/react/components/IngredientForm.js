@@ -45,14 +45,14 @@ const IngredientForm = props => {
 
   return(
     <div className="card index_margin">
-      <form className="margin" onSubmit={handleSubmit}>
+      <form className="" onSubmit={handleSubmit}>
         <ErrorList errors={errors}/>
         <label>
           Ingredients:
           <input type="text" id="ingredients" name="ingredients" onChange={handleInputChange} value={newIngredients.ingredients} />
         </label>
 
-        <input className="form-input signup" id="submit" type="submit" />
+        <input className="form-input signup" id="submit" type="submit" value="Search" />
         <br />
         <input onClick={clearForm} className="form-input signup" type="button" value="Clear" />
       </form>
