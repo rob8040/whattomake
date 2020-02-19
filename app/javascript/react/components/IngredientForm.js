@@ -48,7 +48,9 @@ const IngredientForm = props => {
       <form className="" onSubmit={handleSubmit}>
         <ErrorList errors={errors}/>
         <label>
-          Ingredients:
+          <h4>
+            Ingredient(s) Search Bar:
+          </h4>
           <input type="text" id="ingredients" name="ingredients" onChange={handleInputChange} value={newIngredients.ingredients} />
         </label>
 

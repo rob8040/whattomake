@@ -3,12 +3,25 @@
   margin-right: 100px;
 }
 
-#name {
+#name, .text_color {
   color: white;
+}
+
+.box_color {
+  background: rgba(159,214,24,0.6);
 }
 
 .opacity {
   opacity: .5;
+}
+
+.center {
+  text-align: center;
+}
+
+.center_margin {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .index_padding {

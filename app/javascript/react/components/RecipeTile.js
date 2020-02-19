@@ -9,8 +9,8 @@ const RecipeTile = ({ingredientData}) => {
         <h5 id="username">User: {user.username}</h5>
         <h5 id="useringredients">Ingredients user had: {ingredient.ingredients}</h5>
       </div>
-      <div className="card-divider">
-        <h1 id="name">{name}</h1>
+      <div className="card-divider center_margin box_color">
+        <h1 className="center text_color" id="name">{name}</h1>
       </div>
       <div className="card-section solid">
         <img src={picture}/>

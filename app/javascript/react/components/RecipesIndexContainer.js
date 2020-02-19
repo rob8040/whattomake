@@ -84,7 +84,7 @@ const RecipesIndexContainer = props => {
   })
 
   return(
-    <div className="grid-x">
+    <div className="grid-x center">
       <div className="cell">
         <IngredientForm
           addNewIngredient={addNewIngredient}
