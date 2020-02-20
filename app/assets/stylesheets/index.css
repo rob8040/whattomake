@@ -8,15 +8,33 @@
 }
 
 .box_color {
-  background: rgba(159,214,24,0.6);
+  background: rgba(130,142,72,0.95);
 }
 
-.opacity {
-  opacity: .5;
+.bold-headers {
+  font-weight: bolder;
+}
+
+.link-color {
+  background-color: rgb(142,72,130);
+  padding-left: 10%;
+  padding-right: 10%;
+  border-radius: 10px;
+}
+
+.button-color {
+  background-color: #ffae00;
+  font-weight: bolder;
+  margin: 10px;
 }
 
 .center {
   text-align: center;
+}
+
+.ingredient-form-width {
+  margin: auto;
+  width: 60%;
 }
 
 .center_margin {
@@ -24,10 +42,33 @@
   margin-right: auto;
 }
 
+.padding {
+  padding-left: 30%;
+  padding-right: 30%;
+  border-radius: 10px;
+}
+
+.form_margin {
+  display: block;
+  margin: auto;
+  width: 400px;
+}
+
+.rating_margin {
+  display: block;
+  margin: auto;
+  width: 100px;
+}
+.review_margin {
+  display: block;
+  margin: auto;
+  width: 800px;
+}
+
 .index_padding {
   padding: 20px;
 }
 
 .card {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.95);
 }

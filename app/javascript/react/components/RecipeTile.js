@@ -6,18 +6,22 @@ const RecipeTile = ({ingredientData}) => {
   return(
     <div className="card index_margin">
       <div className="index_padding solid">
-        <h5 id="username">User: {user.username}</h5>
-        <h5 id="useringredients">Ingredients user had: {ingredient.ingredients}</h5>
+        <h5 id="username"><div className="bold-headers">User:</div> {user.username}</h5>
+        <h5 id="useringredients"><div className="bold-headers">Ingredients User Had:</div> {ingredient.ingredients}</h5>
       </div>
-      <div className="card-divider center_margin box_color">
+      <div className="card-divider center_margin padding box_color">
         <h1 className="center text_color" id="name">{name}</h1>
       </div>
       <div className="card-section solid">
         <img src={picture}/>
-        <p id="ingredients">Ingredients: {ingredients}</p>
-        <p id="instructions">Instructions: {instructions}</p>
-        <p id="rating">Rating: {rating}</p>
-        <p id="review">Review: {review}</p>
+        <div className="bold-headers">Ingredients: </div>
+        <p id="ingredients">{ingredients}</p>
+        <div className="bold-headers">Instructions: </div>
+        <p id="instructions">{instructions}</p>
+        <div className="bold-headers">Rating: </div>
+        <p id="rating">{rating}</p>
+        <div className="bold-headers">Review: </div>
+        <p id="review">{review}</p>
       </div>
     </div>
   )

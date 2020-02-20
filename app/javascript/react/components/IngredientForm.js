@@ -44,19 +44,18 @@ const IngredientForm = props => {
   }
 
   return(
-    <div className="card index_margin">
+    <div className="card index_margin ingredient-form-width">
       <form className="" onSubmit={handleSubmit}>
         <ErrorList errors={errors}/>
         <label>
-          <h4>
-            Ingredient(s) Search Bar:
+          <h4 className="bold-headers">
+            Ingredient Search Bar:
           </h4>
-          <input type="text" id="ingredients" name="ingredients" onChange={handleInputChange} value={newIngredients.ingredients} />
+          <input className="form_margin" type="text" id="ingredients" placeholder="egg, bacon, cheese" name="ingredients" onChange={handleInputChange} value={newIngredients.ingredients} />
         </label>
 
-        <input className="form-input signup" id="submit" type="submit" value="Search" />
+        <input className="form-input button-color signup" id="submit" type="submit" value="Search" />
         <br />
-        <input onClick={clearForm} className="form-input signup" type="button" value="Clear" />
       </form>
     </div>
   )

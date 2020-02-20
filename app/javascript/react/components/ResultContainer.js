@@ -9,7 +9,7 @@ const ResultContainer = ({recipes, searchedIngredients}) => {
     <div className="card index_margin">
       <Link to={`/ingredients/${ingredient_id}/recipes/${id}`}>
         <div className="index_padding solid">
-          <h5 id="username">{name}</h5>
+          <h5 className="link-color" id="name">{name}</h5>
         </div>
         <div className="card-section solid">
           <img src={picture}/>

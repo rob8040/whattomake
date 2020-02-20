@@ -1,17 +1,11 @@
 .color {
-  background-color: rgba(159,214,24,0.8);
+  background-color: rgba(130,142,72,0.8);
 }
 
 a {
-  color: #8A00C2;
+  color: white;
   font-weight: bold;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-}
-
-.margin {
-  display: block;
-  margin-left: 200px;
-  margin-right: 200px;
 }
 
 .cell {
