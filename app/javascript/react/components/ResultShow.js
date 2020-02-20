@@ -120,16 +120,17 @@ const ResultShow = props => {
 
   let ingredientString = ingredients.join(", ")
   return(
-    <div className="card index_margin">
+    <div className="card center index_margin">
       <div className="index_padding solid">
-        <h2 id="">{recipeInfo.name}</h2>
+        <h2 className="index_margin bold-headers link-color" id="">{recipeInfo.name}</h2>
       </div>
       <div className="card-section solid">
         <img src={recipeInfo.picture}/>
-        <h5>Ingredients:</h5>
+        <h5 className="bold-headers">Ingredients:</h5>
         {ingredientList}
         <br />
-        <p id="">Instructions: {recipeInfo.instructions}</p>
+        <p className="bold-headers" id="">Instructions: </p>
+        {recipeInfo.instructions}
         <ErrorList errors={errors}/>
         <ResultForm
           handleInputChange={handleInputChange}

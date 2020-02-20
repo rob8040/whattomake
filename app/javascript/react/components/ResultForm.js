@@ -11,20 +11,19 @@ const ResultForm = props => {
 
   return(
     <form className="" onSubmit={props.handleSubmit} >
-      <label>
+      <label className="bold-headers rating_margin">
         Rating:
         <select className="" onChange={props.handleInputChange} id="rating" value={newReview.rating}>
           {ratingOptions}
         </select>
       </label>
-      <label>
+      <label className="bold-headers review_margin">
         Review:
         <textarea type="text" id="review" name="rating" onChange={props.handleInputChange} value={props.recipeInfo.review} />
       </label>
 
-      <input className="form-input signup" id="submit" type="submit" />
-      <br />
-      <input onClick={props.clearForm} className="form-input signup" type="button" value="Clear" />
+      <input className="form-input button-color signup" id="submit" type="submit" />
+      <input onClick={props.clearForm} className="form-input button-color signup" type="button" value="Clear" />
     </form>
   )
 }

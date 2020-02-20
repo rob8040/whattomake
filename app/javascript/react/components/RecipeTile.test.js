@@ -36,7 +36,7 @@ describe("RecipeTile", () => {
   })
 
   it("should find a h5 element containing the ingredients as props", () => {
-    expect(wrapper.find("#useringredients").text()).toBe("Ingredients user had: my food")
+    expect(wrapper.find("#useringredients").text()).toBe("Ingredients User Had: my food")
   })
 
   it("should find a h1 element containing the name as props", () => {
@@ -48,18 +48,18 @@ describe("RecipeTile", () => {
   })
 
   it("should find a p element containing the ingredients as props", () => {
-    expect(wrapper.find("#ingredients").text()).toBe("Ingredients: food")
+    expect(wrapper.find("#ingredients").text()).toBe("food")
   })
 
   it("should find a p element containing the instructions as props", () => {
-    expect(wrapper.find("#instructions").text()).toBe("Instructions: just do it")
+    expect(wrapper.find("#instructions").text()).toBe("just do it")
   })
 
   it("should find a p element containing the rating as props", () => {
-    expect(wrapper.find("#rating").text()).toBe("Rating: 5")
+    expect(wrapper.find("#rating").text()).toBe("5")
   })
 
   it("should find a p element containing the review as props", () => {
-    expect(wrapper.find("#review").text()).toBe("Review: this is ok")
+    expect(wrapper.find("#review").text()).toBe("this is ok")
   })
 })
