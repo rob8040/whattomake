@@ -11,6 +11,7 @@ const RecipesIndexContainer = props => {
   const [ searchedIngredients, setSearchedIngredients ] = useState({})
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     fetch("/api/v1/ingredients/:ingredient_id/recipes")
     .then(response => {
       if (response.ok) {

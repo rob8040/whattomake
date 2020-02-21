@@ -14,7 +14,7 @@ describe("RecipeTile", () => {
   beforeEach(() => {
     ingredientData = {
       ingredient: { ingredients: "my food"},
-      user: {username: "Userman"},
+      username: "Userman",
       name: "food title",
       picture: "image.png",
       ingredients: "food",

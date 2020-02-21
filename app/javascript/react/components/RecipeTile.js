@@ -1,12 +1,11 @@
 import React from "react"
 
 const RecipeTile = ({deleteRecipe, ingredientData}) => {
-  let { id, name, picture, ingredients, instructions, rating, review, ingredient, user } = ingredientData
+  let { id, name, picture, ingredients, current_username, username, instructions, rating, review, ingredient, user } = ingredientData
   let className = "hidden"
-  if (ingredientData.user.username === user.username) {
-    className = "visible"
+  if (current_username === username) {
+    className = "visible delete-color"
   }
-  // debugger
 
   const handleDelete = () => {
     deleteRecipe(id)
@@ -15,7 +14,7 @@ const RecipeTile = ({deleteRecipe, ingredientData}) => {
   return(
     <div className="card index_margin">
       <div className="index_padding solid">
-        <h5 id="username"><div className="bold-headers">User:</div> {user.username}</h5>
+        <h5 id="username"><div className="bold-headers">User:</div> {username}</h5>
         <h5 id="useringredients"><div className="bold-headers">Ingredients User Had:</div> {ingredient.ingredients}</h5>
       </div>
       <div className="card-divider center_margin padding box_color">
