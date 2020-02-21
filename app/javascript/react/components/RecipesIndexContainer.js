@@ -6,7 +6,6 @@ import IngredientForm from "./IngredientForm"
 import ResultContainer from "./ResultContainer"
 
 const RecipesIndexContainer = props => {
-  const [ shouldRedirect, setShouldRedirect ] = useState(false)
   const [ allRecipes, setAllRecipes ] = useState([])
   const [ newRecipes, setNewRecipes ] = useState([])
   const [ searchedIngredients, setSearchedIngredients ] = useState({})
@@ -60,6 +59,31 @@ const RecipesIndexContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  const deleteRecipe = (recipeId) => {
+    fetch(`/api/v1/ingredients/:ingredient_id/recipes/${recipeId}`, {
+      credentials: 'same-origin',
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then((response) => {return response.json()})
+    .then((response) => {
+      setAllRecipes(response.recipes)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
   const recipeTiles = allRecipes.map(recipe => {
 
     return(
@@ -67,6 +91,7 @@ const RecipesIndexContainer = props => {
         <RecipeTile
           key={recipe.id}
           ingredientData={recipe}
+          deleteRecipe={deleteRecipe}
         />
       </div>
     )

@@ -57,26 +57,10 @@ const ResultShow = props => {
     })
   }
 
-  // const validSubmission = () => {
-  //   let submitErrors = {}
-  //   const requiredFields = ["name, picture, ingredients, instructions, rating"]
-  //   requiredFields.forEach((field) => {
-  //     if (recipeInfo[field].trim() === "") {
-  //       submitErrors = {
-  //         ...submitErrors, [field]: "is blank"
-  //       }
-  //     }
-  //   })
-  //   setErrors(submitErrors)
-  //   return _.isEmpty(submitErrors)
-  // }
-
   const handleSubmit = (event) => {
     event.preventDefault()
-    // if (validSubmission()) {
-      addNewRecipe(recipeInfo)
-      clearForm()
-    // }
+    addNewRecipe(recipeInfo)
+    clearForm()
   }
 
   const addNewRecipe = (formPayload) => {

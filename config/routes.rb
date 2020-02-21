@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/recipes_search', to: "ingredients#search"
       resources :ingredients, only: [:index, :create] do
-        resources :recipes, only: [:index, :create, :show]
+        resources :recipes, only: [:index, :create, :show, :destroy]
       end
     end
   end
