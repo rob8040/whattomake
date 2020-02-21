@@ -3,6 +3,10 @@
   margin-right: 100px;
 }
 
+.hidden {
+  display: none;
+}
+
 #name, .text_color {
   color: white;
 }
@@ -24,6 +28,12 @@
 
 .button-color {
   background-color: #ffae00;
+  font-weight: bolder;
+  margin: 10px;
+}
+
+.delete-color {
+  background-color: #cc4b37;
   font-weight: bolder;
   margin: 10px;
 }

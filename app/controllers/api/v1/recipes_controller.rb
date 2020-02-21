@@ -2,7 +2,7 @@ class Api::V1::RecipesController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
-    render json: Recipe.all
+    render json: Recipe.all.reverse
   end
 
   def show
@@ -32,6 +32,17 @@ class Api::V1::RecipesController < ApplicationController
       if recipe.save
         render json: recipe
       end
+    end
+  end
+
+  def destroy
+    recipe = Recipe.find(params["id"])
+    if current_user.id == recipe.user_id
+      recipe.destroy
+      recipes = Recipe.all.reverse
+      render json: recipes
+    else
+      render json: recipes
     end
   end
 
