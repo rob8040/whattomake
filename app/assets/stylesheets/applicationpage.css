@@ -8,6 +8,13 @@ a {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
+.title {
+  color: white;
+  font-weight: bold;
+  font-family: 'Kaushan Script', Helvetica, sans-serif;
+  letter-spacing: 5px;
+}
+
 .cell {
   margin-bottom: 20px;
 }
