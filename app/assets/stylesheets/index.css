@@ -38,6 +38,13 @@
   margin: 10px;
 }
 
+.sign-in-pop {
+  text-align: center;
+  color: #ffae00;
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
+
 .delete-color {
   background-color: #cc4b37;
   font-weight: bolder;
