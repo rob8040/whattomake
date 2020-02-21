@@ -18,7 +18,7 @@ const RecipeTile = ({deleteRecipe, ingredientData}) => {
         <h5 id="useringredients"><div className="bold-headers">Ingredients User Had:</div> {ingredient.ingredients}</h5>
       </div>
       <div className="card-divider center_margin padding box_color">
-        <h1 className="center text_color" id="name">{name}</h1>
+        <h1 className="center text_color name-bold" id="name">{name}</h1>
       </div>
       <div className="card-section solid">
         <img src={picture}/>

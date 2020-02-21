@@ -19,11 +19,17 @@
   font-weight: bolder;
 }
 
+.name-bold {
+  font-weight: bold;
+  font-size: 45px;
+}
+
 .link-color {
   background-color: rgb(142,72,130);
   padding-left: 10%;
   padding-right: 10%;
   border-radius: 10px;
+  color: white;
 }
 
 .button-color {
