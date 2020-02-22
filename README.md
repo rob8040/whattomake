@@ -26,3 +26,6 @@ To run this app locally, do the following in order:
 6. yarn run start (to run the React front end)
 7. in a new tab run: bundle exec rails s (for the Rails back end)
 8. navigate your browser to localhost:3000
+
+Note: This app requires the Spoonacular API to use the search bar and review a recipe, a recipe cannot be added by a user 
+to the database by design. I am considering that functionality for the future.
