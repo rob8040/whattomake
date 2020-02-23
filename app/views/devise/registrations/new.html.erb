@@ -1,34 +1,36 @@
-<h2 class="center text_color">Sign up</h2>
+<div class="card index_margin">
+<h2 class="center">Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field index_margin">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field index_margin">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field center_margin">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field index_margin">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field center_margin">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field index_margin">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
+    <div class="field center_margin">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions index_margin">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="field center_margin">
+      <%= f.label :username %><br />
+      <%= f.text_field :username %>
+    </div>
 
+    <div class="actions center_margin">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+</div>
 <%= render "devise/shared/links" %>
