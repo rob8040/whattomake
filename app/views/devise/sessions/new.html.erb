@@ -1,12 +1,13 @@
-<h2 class="center text_color">Log in</h2>
+<div class="card index_margin">
+<h2 class="center">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field index_margin">
+  <div class="field center_margin">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field index_margin">
+  <div class="field center_margin">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
@@ -22,5 +23,6 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+</div>
 
 <%= render "devise/shared/links" %>
