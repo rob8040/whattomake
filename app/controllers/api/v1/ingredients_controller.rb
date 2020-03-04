@@ -3,9 +3,9 @@ class Api::V1::IngredientsController < ApplicationController
 
   protect_from_forgery unless: -> { request.format.json? }
 
-  def index
-    render json: Ingredient.all
-  end
+  # def index
+  #   render json: Ingredient.all
+  # end
 
   def search
     if current_user
