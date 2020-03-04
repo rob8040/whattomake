@@ -6,11 +6,11 @@ import _ from "lodash"
 import ResultForm from "./ResultForm"
 
 const ResultShow = props => {
-  const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [ shouldRedirect, setShouldRedirect ] = useState(false)
   const [ recipeInfo, setRecipeInfo ] = useState({
     name: "",
     picture: "",
-    ingredients: {ingredientString},
+    ingredients: "",
     instructions: "",
     rating: "",
     review: ""
@@ -102,18 +102,19 @@ const ResultShow = props => {
     )
   })
 
-  let ingredientString = ingredients.join(", ")
+  // let ingredientString = ingredients.join(", ")
+
   return(
     <div className="card center index_margin">
       <div className="index_padding solid">
-        <h2 className="index_margin bold-headers link-color" id="">{recipeInfo.name}</h2>
+        <h2 className="index_margin bold-headers link-color" id="recipe-name">{recipeInfo.name}</h2>
       </div>
       <div className="card-section solid">
         <img src={recipeInfo.picture}/>
-        <h5 className="bold-headers">Ingredients:</h5>
+        <h5 className="bold-headers" id="recipe-ingredients">Ingredients:</h5>
         {ingredientList}
         <br />
-        <p className="bold-headers" id="">Instructions: </p>
+        <p className="bold-headers" id="recipe-instructions">Instructions: </p>
         {recipeInfo.instructions}
         <ErrorList errors={errors}/>
         <ResultForm
